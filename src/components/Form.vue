@@ -1,5 +1,61 @@
-
 <script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            Nombre: " ",
+            Edad: " ",
+            EstadoCivil: " ",
+            Trabajo:" ",
+            Residencia: " ",
+            Cita: " ",
+            CitaAutor: " ",
+            Bio: " ",
+            Personalidad1: " ",
+            Personalidad2:" ",
+            Personalidad3: " ",
+            Personalidad4: " ",
+            Objetivos: " ",
+            Frustraciones: [],
+            Motivaciones: [],
+            Marcas: " "
+        };
+    },
+    mounted() {
+        
+
+    },
+    methods: {
+        Enviar(){
+            axios.post("/api/guardarPersonasUxd.php", {
+                nombre: this.Nombre,
+                edad: this.Edad,
+                estadoCivil: this.EstadoCivil,
+                trabajo: this.Trabajo,
+                residencia: this.Residencia,
+                cita: this.Cita,
+                citaAutor: this.CitaAutor,
+                bio: this.Bio,
+                personalidad01: this.Personalidad1,
+                personalidad02: this.Personalidad2,
+                personalidad03: this.Personalidad3,
+                personalidad04: this.Personalidad4,
+                objetivos: this.Objetivos,
+                frustraciones: this.Frustraciones,
+                motivaciones: this.Motivaciones,
+                marcas: this.Marcas
+                //completar las variables, estas deben llamarse como las que se recibirán en el backend sin el símbolo del dolar $
+            })
+            .then((response) => {
+            console.log(response.status)
+            });
+
+
+        }
+
+    }
+}
+
 
 
 
@@ -14,19 +70,15 @@
     <div class="pl-5 grid gap-5  grid-cols-3 bg-blue-300">
     <div class="my-5">
     <label for="nombre" class="text-lg">Nombre</label><br>
-    <input type="text" id="nombre" v-model="nombre" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingresa nombre">
-    </div>
-    <div class="my-5">
-    <label for="apellido" class="text-lg">Apellido</label><br>
-    <input type="text" id="apellido" v-model="apellido" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingresa apellido">
+    <input type="text" id="nombre" v-model="Nombre" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingresa nombre">
     </div>
     <div class="my-5">
     <label for="edad" class="text-lg">Edad</label><br>
-    <input type="int" id="edad" v-model="edad" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingresa edad">
+    <input type="int" id="edad" v-model="Edad" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingresa edad">
     </div>
     <div class="my-5">
     <label for="estadoCivil" class="text-lg">Estado Civil</label><br>
-    <select name="estadoCivil" id="estadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">Selecciona tu estado civil
+    <select name="estadoCivil" id="estadoCivil" V-model="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">Selecciona tu estado civil
     <option value="1">Soltero</option>
     <option value="2">Casado</option>
     <option value="3">Divorciado</option>
@@ -37,43 +89,61 @@
     </div>
     <div class="my-5">
     <label for="trabajo" class="text-lg">Trabajo</label><br>
-    <input type="text" id="trabajo" v-model="trabajo" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese su trabajo">
+    <input type="text" id="trabajo" v-model="Trabajo" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese su trabajo">
     </div>
     </div>
     <h1 class="my-5 text-xl">Datos de personalidad</h1>
     <div class="pl-5 grid gap-6 grid-cols-3 bg-blue-300">
     <div class="my-5">
     <label for="cita" class="text-md">Escribe una cita</label><br>
-    <input type="text" id="cita" v-model="cita" class="form-input border-gray-300 p-2 rounded-md text-black h-full w-full" placeholder="Ingrese una cita">
+    <input type="text" id="cita" v-model="Cita" class="form-input border-gray-300 p-2 rounded-md text-black h-full w-full" placeholder="Ingrese una cita">
     </div>
     <div class="my-5">
     <label for="citaAutor" class="text-lg">Autor de la cita</label><br>
-    <input type="text" id="citaAutor" v-model="citaAutor" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese autor">
+    <input type="text" id="citaAutor" v-model="CitaAutor" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese autor">
     </div>
     <div class="my-5">
     <label for="bio" class="text-lg">Escribe tu bio</label><br>
-    <input type="text" id="bio" v-model="bio" class="form-input border-gray-300 p-2 rounded-md text-black h-full w-full" placeholder="Ingrese tu bio">
+    <input type="text" id="bio" v-model="Bio" class="form-input border-gray-300 p-2 rounded-md text-black h-full w-full" placeholder="Ingrese tu bio">
     </div>
     <div class="my-5">
     <label for="personalidad01" class="text-lg">Porcentaje de personaliad 1</label><br>
-    <input type="int" id="personalidad01" v-model="personalidad01" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
+    <input type="int" id="personalidad01" v-model="Personalidad1" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
     </div>
     <div class="my-5">
     <label for="personalidad02" class="text-lg">Porcentaje de personaliad 2</label><br>
-    <input type="int" id="personalidad02" v-model="personalidad02" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
+    <input type="int" id="personalidad02" v-model="Personalidad2" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
     </div>
     <div class="my-5">
     <label for="personalidad03" class="text-lg">Porcentaje de personaliad 3</label><br>
-    <input type="int" id="personalidad03" v-model="personalidad03" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
+    <input type="int" id="personalidad03" v-model="Personalidad3" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
     </div>
     <div class="my-5">
     <label for="personalidad04" class="text-lg">Porcentaje de personaliad 4</label><br>
-    <input type="int" id="personalidad04" v-model="personalidad04" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
+    <input type="int" id="personalidad04" v-model="Personalidad4" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese porcentaje">
     </div>
-    
-
+    <div class="my-5">
+    <label for="Objetivos" class="text-lg">Objetivos</label><br>
+    <input type="text" id="Objetivos" v-model="Objetivos" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Objetivos">
     </div>
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded">Registrar</button>
+    <div class="my-5">
+    <label for="Frustraciones" class="text-lg">Frustraciones</label><br>
+    <input type="texr" id="Frustaciones" v-model="Frustraciones" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Frustraciones">
+    </div>
+    <div class="my-5">
+    <label for="Motivaciones" class="text-lg">Motivaciones</label><br>
+    <input type="text" id="Motivaciones" v-model="Motivaciones" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Motivaciones">
+    </div>
+    <div class="my-5">
+    <label for="Marcas" class="text-lg">Marcas</label><br>
+    <input type="text" id="Marcas" v-model="Marcas" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese sus marcas">
+    </div>
+    </div>
+    <div @click="Enviar()">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded" type="button">
+                                Enviar
+                            </button>
+                        </div>
   </form>
 </div>
   </div>
