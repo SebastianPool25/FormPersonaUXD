@@ -78,13 +78,14 @@ export default {
     </div>
     <div class="my-5">
     <label for="estadoCivil" class="text-lg">Estado Civil</label><br>
-    <select name="estadoCivil" id="estadoCivil" V-model="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">Selecciona tu estado civil
-    <option value="1">Soltero</option>
-    <option value="2">Casado</option>
-    <option value="3">Divorciado</option>
-    <option value="4">Separado</option>
-    <option value="5">Union Libre</option>
-    <option value="6">Viudo</option>
+    <select name="estadoCivil" id="estadoCivil" v-model="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">
+    <option>Soltero</option>
+    <option>Casado</option>
+    <option>Divorciado</option>
+    <option>Divorciado</option>
+    <option>Separado</option>
+    <option>Union Libre</option>
+    <option>Viudo</option>
     </select>
     </div>
     <div class="my-5">
@@ -139,11 +140,11 @@ export default {
     <input type="text" id="Marcas" v-model="Marcas" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese sus marcas">
     </div>
     </div>
+
     <div @click="Enviar()">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded" type="button">
-                                Enviar
-                            </button>
-                        </div>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded" type="button"> Enviar </button>
+    </div>
+    
   </form>
 </div>
   </div>
