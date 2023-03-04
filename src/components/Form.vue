@@ -1,6 +1,11 @@
 <script>
+import boton from '../components/buttsSubmit.vue'
+
 import axios from 'axios';
 export default {
+  components:{
+    boton
+  },
     data() {
         return {
             Nombre: " ",
@@ -18,7 +23,7 @@ export default {
             Objetivos: " ",
             Frustraciones: [],
             Motivaciones: [],
-            Marcas: " "
+            Marcas: " ",
         };
     },
     mounted() {
@@ -141,8 +146,8 @@ export default {
     </div>
     </div>
 
-    <div @click="Enviar()">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded" type="button"> Enviar </button>
+    <div>
+    <boton :desactivar="true" @click="Enviar()">Registrar</boton>
     </div>
     
   </form>
