@@ -118,7 +118,7 @@ this.Bio=s;
     <caja @data="viejo"></caja>
     </div>
     <div class="my-5">
-    <label for="estadoCivil" class="text-lg">Estado Civil</label><br>
+    <label for="estadoCvil" class="text-lg">Estado Civil</label><br>
     <select name="estadoCivil" id="estadoCivil" v-model="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">
     <option>Soltero</option>
     <option>Casado</option>
