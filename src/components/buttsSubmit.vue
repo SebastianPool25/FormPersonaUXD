@@ -1,8 +1,4 @@
 <script>
-export default{
-    props:['desactivar']
-}
-
 </script>
 <template>
 
