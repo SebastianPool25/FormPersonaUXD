@@ -2,17 +2,18 @@
 import boton from '../components/buttsSubmit.vue';
 import slider from '../components/InputSlider.vue';
 import caja from '../components/InputsText.vue';
+import cajagrande from '../components/textarea.vue'
 
 import axios from 'axios';
 export default {
   components:{
-    boton,slider,caja
+    boton,slider,caja,cajagrande
   },
-  emits: ['person'],
+  emits: ['person','data','testa'],
     data() {
         return {
             Nombre: " ",
-            Edad: " ",
+            Edad: "",
             EstadoCivil: " ",
             Trabajo:" ",
             Residencia: " ",
@@ -27,6 +28,7 @@ export default {
             Frustraciones: [],
             Motivaciones: [],
             Marcas: " ",
+            Soltero: 1,
         };
     },
     mounted() {
@@ -38,7 +40,7 @@ export default {
 this.Nombre=s;
       },
       viejo(s){
-this.Edad=s;
+  this.Edad=s;
       },
       chamba(s){
 this.Trabajo=s;
@@ -103,12 +105,12 @@ this.Bio=s;
 </script>
 
 <template>
-  <body class="bg-blue-300 font-mono flex">
+  <body class="bg-blue-300 font-mono flex xl:font-bold">
   <div class="p-5 mx-5">
   <h1 class="my-5 text-xl">Llena el Formulario de sus datos personales</h1>
   <div id="app">
   <form>
-    <div class="pl-5 grid gap-5  grid-cols-3 bg-blue-300 text-center">
+    <div class="pl-5 grid gap-5 grid-cols-3 bg-blue-300 text-center max-lg:grid-cols-1">
     <div class="my-5">
     <label for="nombre" class="text-lg">Nombre</label><br>
     <caja @data="nombreyapellido"></caja>
@@ -139,19 +141,21 @@ this.Bio=s;
     </div>
     </div>
     <h1 class="my-5 text-xl">Datos de personalidad</h1>
-    <div class="pl-5 bg-blue-300 text-center my-10 grid grid-cols-3 gap-4">    
+    <div class="pl-5 bg-blue-300 text-center my-10 grid grid-cols-3 gap-4 max-lg:grid-cols-1">    
     <div class="my-10">
     <label for="cita" class="text-lg">Escribe una cita</label><br>
-    <caja @data="inspira"></caja>
+
+    <cajagrande @testa="inspira"></cajagrande>
+
     <label for="citaAutor" class="text-lg">Autor de la cita</label><br>
     <caja @data="creador"></caja>
     </div>
     <div class="my-10">
     <label for="bio" class="text-lg">Escribe tu bio</label><br>
-    <caja @data="biografia"></caja>
+    <cajagrande @testa="biografia"></cajagrande>
     </div>
 
-    <div class="my-10">
+    <div class="my-10 max-lg:grid-cols-1">
     <slider @perso="perso1">Personalidad 01</slider>
     <br>
     <slider @person="perso2">Personalidad 02</slider>

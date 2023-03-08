@@ -46,7 +46,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <RouterLink to="/" class="text-2xl mx-14">Home</RouterLink>
         <RouterLink to="/Formulario" class="text-2xl mx-14">Formulario</RouterLink>
-        <RouterLink to="/about" class="text-2xl mx-14">About</RouterLink>
+        <RouterLink to="/Persona" class="text-2xl mx-14">Persona</RouterLink>
       </nav>
   </header>
 

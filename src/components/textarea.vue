@@ -8,7 +8,7 @@ export default {
     },
     methods: {
         enviar() {
-            this.$emit('data',this.dialogo)
+            this.$emit('testa',this.dialogo)
         }
     }
 }
@@ -18,7 +18,7 @@ export default {
     <div>
         <slot></slot>
         <br>
-        <input type="text" class="form-input border-gray-300 p-5 my-5 rounded-md text-black" v-model="dialogo" @input="enviar">
+        <textarea type="text" v-model="dialogo" class="form-input border-gray-300 p-5 my-5 rounded-md text-black" @input="enviar()"></textarea>
 
     </div>
 </template>
