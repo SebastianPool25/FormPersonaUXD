@@ -105,7 +105,7 @@ this.Bio=s;
 
 <template>
   <body class="bg-blue-300 font-mono flex xl:font-bold">
-  <div class="p-5 mx-5">
+  <div class="p-5 mx-5 bg-white">
   <h1 class="my-5 text-xl">Llena el Formulario de sus datos personales</h1>
   <div id="app">
   <form>
@@ -120,14 +120,14 @@ this.Bio=s;
     </div>
     <div class="my-5">
     <label for="estadoCvil" class="text-lg">Estado Civil</label><br>
-    <select name="estadoCivil" id="estadoCivil" v-model="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">
-    <option>Soltero</option>
-    <option>Casado</option>
-    <option>Divorciado</option>
-    <option>Divorciado</option>
-    <option>Separado</option>
-    <option>Union Libre</option>
-    <option>Viudo</option>
+    <select name="estadoCivil" id="estadoCivil" v-model.number="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">
+    <option value="1">Soltero</option>
+    <option value="2">Casado</option>
+    <option value="3">Divorciado</option>
+    <option value="4">Divorciado</option>
+    <option value="5">Separado</option>
+    <option value="6">Union Libre</option>
+    <option value="7">Viudo</option>
     </select>
     </div>
     <div class="my-5">
@@ -167,19 +167,19 @@ this.Bio=s;
       <h1 class="my-5 text-xl">Datos de persona</h1>
     <div class="mt-10 grid grid-cols-3 gap-4">
     <label for="Objetivos" class="text-lg">Objetivos</label><br>
-    <input type="text" id="Objetivos" v-model="Objetivos" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Objetivos">
+    <input type="text" id="Objetivos" v-model="Objetivos" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Objetivos">
     <label for="Frustraciones" class="text-lg">Frustraciones</label><br>
-    <input type="text" id="Frustaciones" v-model="Frustraciones" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Frustraciones">
+    <input type="text" id="Frustaciones" v-model="Frustraciones" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Frustraciones">
     <label for="Motivaciones" class="text-lg">Motivaciones</label><br>
-    <input type="text" id="Motivaciones" v-model="Motivaciones" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Motivaciones">
+    <input type="text" id="Motivaciones" v-model="Motivaciones" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Motivaciones">
     <label for="Marcas" class="text-lg">Marcas</label><br>
-    <input type="text" id="Marcas" v-model="Marcas" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese sus marcas">
+    <input type="text" id="Marcas" v-model="Marcas" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese sus marcas">
     </div>
   </div>
     
     </div>
 
-    <div>
+    <div class="flex justify-center">
     <boton type="button" @click="Enviar()">Registrar</boton>
     </div>
     
