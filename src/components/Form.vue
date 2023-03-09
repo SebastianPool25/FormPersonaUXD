@@ -28,7 +28,6 @@ export default {
             Frustraciones: [],
             Motivaciones: [],
             Marcas: " ",
-            Soltero: 1,
         };
     },
     mounted() {
