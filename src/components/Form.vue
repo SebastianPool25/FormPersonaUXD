@@ -155,7 +155,7 @@ this.Bio=s;
     </div>
 
     <div class="my-10 max-lg:grid-cols-1">
-    <slider @perso="perso1">Personalidad 01</slider>
+    <slider @person="perso1">Personalidad 01</slider>
     <br>
     <slider @person="perso2">Personalidad 02</slider>
     <br>
@@ -164,6 +164,7 @@ this.Bio=s;
     <slider @person="perso4">Personalidad 02</slider>
     </div>
     <div class="mt-10">
+      <h1 class="my-5 text-xl">Datos de persona</h1>
     <div class="mt-10 grid grid-cols-3 gap-4">
     <label for="Objetivos" class="text-lg">Objetivos</label><br>
     <input type="text" id="Objetivos" v-model="Objetivos" class="form-input border-gray-300 p-2 rounded-md text-black" placeholder="Ingrese Objetivos">
