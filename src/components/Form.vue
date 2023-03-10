@@ -68,6 +68,7 @@ this.Bio=s;
         perso4(s){
   this.Personali04=s;
         },
+
         Enviar(){
             axios.post("/api/guardarPersonasUxd.php", {
                 nombre: this.Nombre,
@@ -104,12 +105,12 @@ this.Bio=s;
 </script>
 
 <template>
-  <body class="bg-blue-300 font-mono flex xl:font-bold">
+  <body class="bg-white font-mono flex xl:font-bold">
   <div class="p-5 mx-5 bg-white">
-  <h1 class="my-5 text-xl">Llena el Formulario de sus datos personales</h1>
   <div id="app">
-  <form>
-    <div class="pl-5 grid gap-5 grid-cols-3 bg-blue-300 text-center max-lg:grid-cols-1">
+  <form @boton.prevent="enviarFormulario">
+      <h1 class="my-5 text-xl p-5">Llena el Formulario de sus datos personales</h1>
+    <div class="pl-5 grid gap-5 grid-cols-3 bg-blue-300 text-center max-lg:grid-cols-1">  
     <div class="my-5">
     <label for="nombre" class="text-lg">Nombre</label><br>
     <caja @data="nombreyapellido"></caja>
@@ -120,7 +121,7 @@ this.Bio=s;
     </div>
     <div class="my-5">
     <label for="estadoCvil" class="text-lg">Estado Civil</label><br>
-    <select name="estadoCivil" id="estadoCivil" v-model.number="EstadoCivil" class="form-input border-gray-300 p-2 rounded-md text-black">
+    <select name="estadoCivil" id="estadoCivil" v-model.number="EstadoCivil" class="form-input border-gray-300 p-5 my-11 rounded-md text-black">
     <option value="1">Soltero</option>
     <option value="2">Casado</option>
     <option value="3">Divorciado</option>
@@ -139,7 +140,7 @@ this.Bio=s;
     <caja @data="pueblito"></caja>
     </div>
     </div>
-    <h1 class="my-5 text-xl">Datos de personalidad</h1>
+    <h1 class="my-5 text-xl p-5">Datos de personalidad</h1>
     <div class="pl-5 bg-blue-300 text-center my-10 grid grid-cols-3 gap-4 max-lg:grid-cols-1">    
     <div class="my-10">
     <label for="cita" class="text-lg">Escribe una cita</label><br>
@@ -180,7 +181,7 @@ this.Bio=s;
     </div>
 
     <div class="flex justify-center">
-    <boton type="button" @click="Enviar()">Registrar</boton>
+    <boton type="boton" @click="Enviar()">Registrar</boton>
     </div>
     
   </form>
