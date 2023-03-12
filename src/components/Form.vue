@@ -2,12 +2,13 @@
 import boton from '../components/buttsSubmit.vue';
 import slider from '../components/InputSlider.vue';
 import caja from '../components/InputsText.vue';
-import cajagrande from '../components/textarea.vue'
+import cajagrande from '../components/textarea.vue';
+import sel from '../components/inputselect.vue';
 
 import axios from 'axios';
 export default {
   components:{
-    boton,slider,caja,cajagrande
+    boton,slider,caja,cajagrande,sel
   },
   emits: ['person','data','testa'],
     data() {
@@ -24,9 +25,9 @@ export default {
             Personali02: 50,
             Personali03: 50,
             Personali04: 50,
-            Objetivos: " ",
-            Frustraciones: [],
-            Motivaciones: [],
+            Objetivos: [{value:' '}],
+            Frustraciones: [{value: ' '}],
+            Motivaciones: [{value: ''}],
             Marcas: " ",
         };
     },
@@ -40,6 +41,9 @@ this.Nombre=s;
       },
       viejo(s){
   this.Edad=s;
+      },
+      metodoSelect(s){
+this.EstadoCivil=s;
       },
       chamba(s){
 this.Trabajo=s;
@@ -67,6 +71,9 @@ this.Bio=s;
         },
         perso4(s){
   this.Personali04=s;
+        },
+        marca(s){
+  this.Marcas=s;
         },
 
         Enviar(){
@@ -108,7 +115,7 @@ this.Bio=s;
   <body class="bg-white font-mono flex xl:font-bold">
   <div class="p-5 mx-5 bg-white">
   <div id="app">
-  <form @boton.prevent="enviarFormulario">
+  <form>
       <h1 class="my-5 text-xl p-5">Llena el Formulario de sus datos personales</h1>
     <div class="pl-5 grid gap-5 grid-cols-3 bg-blue-300 text-center max-lg:grid-cols-1">  
     <div class="my-5">
@@ -121,15 +128,7 @@ this.Bio=s;
     </div>
     <div class="my-5">
     <label for="estadoCvil" class="text-lg">Estado Civil</label><br>
-    <select name="estadoCivil" id="estadoCivil" v-model.number="EstadoCivil" class="form-input border-gray-300 p-5 my-11 rounded-md text-black">
-    <option value="1">Soltero</option>
-    <option value="2">Casado</option>
-    <option value="3">Divorciado</option>
-    <option value="4">Divorciado</option>
-    <option value="5">Separado</option>
-    <option value="6">Union Libre</option>
-    <option value="7">Viudo</option>
-    </select>
+    <sel @valor="metodoSelect"></sel>
     </div>
     <div class="my-5">
     <label for="trabajo" class="text-lg">Trabajo</label><br>
@@ -174,14 +173,14 @@ this.Bio=s;
     <label for="Motivaciones" class="text-lg">Motivaciones</label><br>
     <input type="text" id="Motivaciones" v-model="Motivaciones" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Motivaciones">
     <label for="Marcas" class="text-lg">Marcas</label><br>
-    <input type="text" id="Marcas" v-model="Marcas" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese sus marcas">
+    <caja @data="marca"></caja>
     </div>
   </div>
     
     </div>
 
     <div class="flex justify-center">
-    <boton type="boton" @click="Enviar()">Registrar</boton>
+    <boton @click="Enviar()" type="button">Registrar</boton>
     </div>
     
   </form>
