@@ -10,11 +10,11 @@ export default {
   components:{
     boton,slider,caja,cajagrande,sel
   },
-  emits: ['person','data','testa'],
+  emits: ['person','valor','data','testa'],
     data() {
         return {
             Nombre: " ",
-            Edad: "",
+            Edad: " ",
             EstadoCivil: " ",
             Trabajo:" ",
             Residencia: " ",
@@ -25,9 +25,9 @@ export default {
             Personali02: 50,
             Personali03: 50,
             Personali04: 50,
-            Objetivos: [{value:' '}],
-            Frustraciones: [{value: ' '}],
-            Motivaciones: [{value: ''}],
+            Objetivos: [],
+            Frustraciones: [],
+            Motivaciones: [],
             Marcas: " ",
         };
     },
@@ -42,7 +42,7 @@ this.Nombre=s;
       viejo(s){
   this.Edad=s;
       },
-      metodoSelect(s){
+      Select(s){
 this.EstadoCivil=s;
       },
       chamba(s){
@@ -128,7 +128,7 @@ this.Bio=s;
     </div>
     <div class="my-5">
     <label for="estadoCvil" class="text-lg">Estado Civil</label><br>
-    <sel @valor="metodoSelect"></sel>
+    <sel @valor="Select" :Datos='{"Uno": "Soltero","Dos": "Casado","Tres": "Divorciado","Cuatro": "Separado","Cinco": "Union libre","Seis": "Viudo"} '></sel>
     </div>
     <div class="my-5">
     <label for="trabajo" class="text-lg">Trabajo</label><br>
