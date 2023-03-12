@@ -4,13 +4,14 @@ import slider from '../components/InputSlider.vue';
 import caja from '../components/InputsText.vue';
 import cajagrande from '../components/textarea.vue';
 import sel from '../components/inputselect.vue';
+import objetivo from '../components/inputobjet.vue'
 
 import axios from 'axios';
 export default {
   components:{
-    boton,slider,caja,cajagrande,sel
+    boton,slider,caja,cajagrande,sel,objetivo
   },
-  emits: ['person','valor','data','testa'],
+  emits: ['person','valor','data','testa','objetivo'],
     data() {
         return {
             Nombre: " ",
@@ -25,7 +26,8 @@ export default {
             Personali02: 50,
             Personali03: 50,
             Personali04: 50,
-            Objetivos: [],
+            nuevosobjetivos:'',
+            Objetivos: [{value:''}],
             Frustraciones: [],
             Motivaciones: [],
             Marcas: " ",
@@ -75,6 +77,9 @@ this.Bio=s;
         marca(s){
   this.Marcas=s;
         },
+        masobjetivos(s, index){
+      this.Objetivos[index] = {value: s}
+    },
 
         Enviar(){
             axios.post("/api/guardarPersonasUxd.php", {
@@ -163,17 +168,24 @@ this.Bio=s;
     <br>
     <slider @person="perso4">Personalidad 02</slider>
     </div>
+
+
     <div class="mt-10">
+      <div>
       <h1 class="my-5 text-xl">Datos de persona</h1>
-    <div class="mt-10 grid grid-cols-3 gap-4">
-    <label for="Objetivos" class="text-lg">Objetivos</label><br>
-    <input type="text" id="Objetivos" v-model="Objetivos" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Objetivos">
-    <label for="Frustraciones" class="text-lg">Frustraciones</label><br>
-    <input type="text" id="Frustaciones" v-model="Frustraciones" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Frustraciones">
-    <label for="Motivaciones" class="text-lg">Motivaciones</label><br>
-    <input type="text" id="Motivaciones" v-model="Motivaciones" class="form-input border-gray-300 p-2 rounded-md text-black my-3" placeholder="Ingrese Motivaciones">
+      <div class="mt-10 grid grid-cols-3 gap-4">
+      <div>
+<div>
+                <label for="motivaciones" class="text-xl"> Objetivos: </label> 
+                <div v-for="(obj, index) in Objetivos">
+                  <objetivo @objetivo="masobjetivos" :index="index"> </objetivo>
+     </div>
+     <button v-on:click.prevent="this.Objetivos.push(nuevosobjetivos)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
+</div>
     <label for="Marcas" class="text-lg">Marcas</label><br>
     <caja @data="marca"></caja>
+    </div>
+</div>
     </div>
   </div>
     
