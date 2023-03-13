@@ -5,13 +5,14 @@ import caja from '../components/InputsText.vue';
 import cajagrande from '../components/textarea.vue';
 import sel from '../components/inputselect.vue';
 import objetivo from '../components/inputobjet.vue'
+import motivacion from '../components/inputmotiva.vue'
 
 import axios from 'axios';
 export default {
   components:{
-    boton,slider,caja,cajagrande,sel,objetivo
+    boton,slider,caja,cajagrande,sel,objetivo, motivacion
   },
-  emits: ['person','valor','data','testa','objetivo'],
+  emits: ['person','valor','data','testa','objetivo','motivaciones'],
     data() {
         return {
             Nombre: " ",
@@ -29,7 +30,8 @@ export default {
             nuevosobjetivos:'',
             Objetivos: [{value:''}],
             Frustraciones: [],
-            Motivaciones: [],
+            nuevasmotivaciones:'',
+            Motivaciones: [{value: '','porcentaje':''}],
             Marcas: " ",
         };
     },
@@ -79,6 +81,9 @@ this.Bio=s;
         },
         masobjetivos(s, index){
       this.Objetivos[index] = {value: s}
+    },
+    masmotivos(f,p, index){
+      this.Motivaciones[index] = {value: f,porcentaje: p}
     },
 
         Enviar(){
@@ -176,14 +181,25 @@ this.Bio=s;
       <div class="mt-10 grid grid-cols-3 gap-4">
       <div>
 <div>
-                <label for="motivaciones" class="text-xl"> Objetivos: </label> 
+                <label for="objetivos" class="text-xl"> Objetivos: </label> 
                 <div v-for="(obj, index) in Objetivos">
                   <objetivo @objetivo="masobjetivos" :index="index"> </objetivo>
      </div>
      <button v-on:click.prevent="this.Objetivos.push(nuevosobjetivos)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
 </div>
+<div>
+                <label for="motivaciones" class="text-xl"> Motivaciones: </label> 
+                <div v-for="(obj, index) in Motivaciones">
+                  <motivacion @motivaciones="masmotivos" :index="index"></motivacion>
+                
+                </div>
+                <button v-on:click.prevent="this.Motivaciones.push(nuevasmotivaciones)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
+              </div>
+
+<div>
     <label for="Marcas" class="text-lg">Marcas</label><br>
     <caja @data="marca"></caja>
+</div>
     </div>
 </div>
     </div>
