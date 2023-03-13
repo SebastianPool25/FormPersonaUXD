@@ -5,14 +5,15 @@ import caja from '../components/InputsText.vue';
 import cajagrande from '../components/textarea.vue';
 import sel from '../components/inputselect.vue';
 import objetivo from '../components/inputobjet.vue'
+import frustra from '../components/inputfrustra.vue'
 import motivacion from '../components/inputmotiva.vue'
 
 import axios from 'axios';
 export default {
   components:{
-    boton,slider,caja,cajagrande,sel,objetivo, motivacion
+    boton,slider,caja,cajagrande,sel,objetivo, motivacion, frustra
   },
-  emits: ['person','valor','data','testa','objetivo','motivaciones'],
+  emits: ['person','valor','data','testa','objetivo','motivaciones','frustracion'],
     data() {
         return {
             Nombre: " ",
@@ -29,7 +30,8 @@ export default {
             Personali04: 50,
             nuevosobjetivos:'',
             Objetivos: [{value:''}],
-            Frustraciones: [],
+            nuevasfrustraciones:'',
+            Frustraciones: [{value:''}],
             nuevasmotivaciones:'',
             Motivaciones: [{value: '','porcentaje':''}],
             Marcas: " ",
@@ -81,6 +83,9 @@ this.Bio=s;
         },
         masobjetivos(s, index){
       this.Objetivos[index] = {value: s}
+    },
+    masfrustraciones(s, index){
+      this.Frustraciones[index] = {value: s}
     },
     masmotivos(f,p, index){
       this.Motivaciones[index] = {value: f,porcentaje: p}
@@ -187,6 +192,13 @@ this.Bio=s;
      </div>
      <button v-on:click.prevent="this.Objetivos.push(nuevosobjetivos)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
 </div>
+<div>
+               <label for="frustraciones" class="text-xl"> Frustraciones: </label> 
+                <div v-for="(obj, index) in Frustraciones">
+                  <frustra @frustracion="masfrustraciones" :index="index"></frustra>
+                </div>
+                <button v-on:click.prevent="this.Frustraciones.push(nuevasfrustraciones)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button> 
+            </div>
 <div>
                 <label for="motivaciones" class="text-xl"> Motivaciones: </label> 
                 <div v-for="(obj, index) in Motivaciones">
