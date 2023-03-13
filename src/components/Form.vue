@@ -131,7 +131,7 @@ this.Bio=s;
   <div class="p-5 mx-5 bg-white">
   <div id="app">
   <form>
-      <h1 class="my-5 text-xl p-5">Llena el Formulario de sus datos personales</h1>
+      <h1 class="my-5 text-xl p-5">Llena el Formulario de sus datos personales.</h1>
     <div class="pl-5 grid gap-5 grid-cols-3 bg-blue-300 text-center rounded-xl max-lg:grid-cols-1">  
     <div class="my-5">
     <label for="nombre" class="text-lg">Nombre</label><br>
@@ -159,7 +159,7 @@ this.Bio=s;
     <caja @data="pueblito"></caja>
     </div>
     </div>
-    <h1 class="my-5 text-xl p-5">Datos de personalidad</h1>
+    <h1 class="my-5 text-xl p-5">Datos de personalidad.</h1>
     <div class="pl-5 bg-blue-300 text-center my-10 grid grid-cols-3 gap-4 rounded-xl max-lg:grid-cols-1">    
     <div class="my-10">
     <label for="cita" class="text-lg">Escribe una cita</label><br>
@@ -189,7 +189,7 @@ this.Bio=s;
 
     <div class="mt-10">
       <div>
-      <h1 class="my-5 text-xl">Datos de persona</h1>
+      <h1 class="my-5 text-xl">Datos de persona.</h1>
       <div class="mt-10 grid grid-cols-4 gap-5 bg-blue-300 rounded-xl max-lg:grid-cols-1">
 <div class="mx-10 p-5">
                 <label for="objetivos" class="text-xl"> Objetivos: </label> 
